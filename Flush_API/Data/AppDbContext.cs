@@ -11,5 +11,7 @@ namespace Flush_API.Data
         }
 
         public DbSet<IbsCount> IbsCount => Set<IbsCount>();
+
+        public DbSet<Ingredient> Ingredient => Set<Ingredient>();
     }
 }
