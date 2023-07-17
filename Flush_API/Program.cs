@@ -14,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
 
 builder.Services.AddScoped<IIngredientRepo,  IngredientRepo>();
+builder.Services.AddScoped<IIbsCountRepo, IbsCountRepo>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
