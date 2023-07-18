@@ -1,16 +1,21 @@
 ﻿using AutoMapper;
 using Flush_API.Data;
+using Flush_API.Dtos;
+using Flush_API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace Flush_API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class IngredientController : ControllerBase
     {
         private readonly IIngredientRepo _repo;
         private readonly IMapper _mapper;
+        private readonly object _client;
+        static HttpClient client = new HttpClient();
+
 
         public IngredientController(IIngredientRepo repo, IMapper mapper)
         {
@@ -19,79 +24,22 @@ namespace Flush_API.Controllers
         }
 
         // GET: IngredientController
-        [HttpGet("/api/ingredients")]
+        [HttpGet("api/ingredients")]
         public ActionResult Index()
         {
             return Ok();
         }
 
-        // GET: IngredientController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        [Route("api/ingredient/{ingredient}")]
+        public async Task<ActionResult<IEnumerable<IngredientReadDto>>> GetIngredient(string ingredient)
         {
-            return Ok();
+            var path = $"https://api.spoonacular.com/food/ingredients/search?apiKey=0bb23cf0a7f64e77b02f60042af49ecf&query={ingredient}";
+            var request = new HttpRequestMessage(HttpMethod.Get, path);
+            var response = client.SendAsync(request).Result;
+            var stringResponse = await response.Content.ReadAsStringAsync();
+            return Ok(stringResponse);
         }
 
-        // GET: IngredientController/Create
-        public ActionResult Create()
-        {
-            return Ok();
-        }
-
-        // POST: IngredientController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return Ok();
-            }
-        }
-
-        // GET: IngredientController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return Ok();
-        }
-
-        // POST: IngredientController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return Ok();
-            }
-        }
-
-        // GET: IngredientController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return Ok();
-        }
-
-        // POST: IngredientController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return Ok();
-            }
-        }
     }
 }
