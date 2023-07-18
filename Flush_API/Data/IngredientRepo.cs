@@ -6,10 +6,12 @@ namespace Flush_API.Data
     public class IngredientRepo : IIngredientRepo
     {
         private readonly AppDbContext _context;
+        private readonly HttpClient _client;
 
-        public IngredientRepo(AppDbContext context)
+        public IngredientRepo(AppDbContext context, HttpClient httpClient)
         {
             _context = context;
+            _client = httpClient;   
         }
         public async Task CreateIngredient(Ingredient ingredient)
         {
@@ -36,9 +38,15 @@ namespace Flush_API.Data
             return await _context.Ingredient.ToListAsync();
         }
 
-        public async Task<Ingredient> GetIngredientById(int id)
+
+        public Task<Ingredient> GetIngredientInformation(int? id, decimal? amount, string unit)
         {
-            return await _context.Ingredient.FirstOrDefaultAsync(x => x.Id == id);
+            throw new NotImplementedException();
+        }
+
+        public Task<Ingredient> GetIngredientSubstitutes(string ingredientName)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task SaveChanges()

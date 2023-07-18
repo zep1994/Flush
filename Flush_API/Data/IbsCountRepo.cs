@@ -34,7 +34,7 @@ namespace Flush_API.Data
 
         public async Task<IEnumerable<IbsCount>> GetAllIbsCounts()
         {
-            return await _context.IbsCount.Where(b => b.Count >= 1).ToArrayAsync();
+            return await _context.IbsCount.Where(b => b.Count >= 1).ToListAsync();
         }
 
         public async Task<IbsCount> GetIbsCountById(int id)

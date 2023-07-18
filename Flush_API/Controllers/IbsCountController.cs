@@ -14,13 +14,14 @@ namespace Flush_API.Controllers
         private readonly IIbsCountRepo _repo;
         private readonly IMapper _mapper;
 
+
         public IbsCountController(IIbsCountRepo repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<IbsCountReadDto>>> GetAllIbsCounts()
         {
             var count = await _repo.GetAllIbsCounts();
@@ -28,7 +29,7 @@ namespace Flush_API.Controllers
             return Ok(_mapper.Map<IEnumerable<IbsCountReadDto>>(count));
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<IbsCountReadDto>>> GetIbsCountById(int id)
         {
             var ibsCountModel = await _repo.GetIbsCountById(id);

@@ -16,6 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 builder.Services.AddScoped<IIngredientRepo,  IngredientRepo>();
 builder.Services.AddScoped<IIbsCountRepo, IbsCountRepo>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
