@@ -10,7 +10,7 @@ namespace Flush_API.Controllers
     {
         [HttpGet]
         [Route("api/admin")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetAdmin()
         {
             var currentUser = GetCurrentUser();
