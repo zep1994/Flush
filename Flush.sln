@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flush_API", "Flush_API\Flush_API.csproj", "{571A4B64-3364-4E3D-A6C6-0BE0CAD821E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flush_API", "Flush_API\Flush_API.csproj", "{571A4B64-3364-4E3D-A6C6-0BE0CAD821E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flush_Client", "Flush_Client\Flush_Client.csproj", "{435715B7-EBB1-4E45-BDA7-40FBC786B84F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{571A4B64-3364-4E3D-A6C6-0BE0CAD821E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{571A4B64-3364-4E3D-A6C6-0BE0CAD821E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{571A4B64-3364-4E3D-A6C6-0BE0CAD821E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{435715B7-EBB1-4E45-BDA7-40FBC786B84F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{435715B7-EBB1-4E45-BDA7-40FBC786B84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{435715B7-EBB1-4E45-BDA7-40FBC786B84F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{435715B7-EBB1-4E45-BDA7-40FBC786B84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{435715B7-EBB1-4E45-BDA7-40FBC786B84F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{435715B7-EBB1-4E45-BDA7-40FBC786B84F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
