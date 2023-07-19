@@ -1,5 +1,6 @@
 ﻿using Flush_Client.Pages;
 using Flush_Client.DataServices;
+using Flush_Client.Services;
 
 namespace Flush_Client
 {
@@ -18,8 +19,13 @@ namespace Flush_Client
 
             builder.Services.AddHttpClient<IRestDataService, RestDataService>();
 
+            builder.Services.AddTransient<LoadingPage>();
+            builder.Services.AddTransient<AuthService>();
+            builder.Services.AddTransient<LoginPage>();
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddTransient<ManageIbsPage>();
+            builder.Services.AddTransient<ProfilePage>();
+            builder.Services.AddTransient<RegistrationPage>();
 
             return builder.Build();
         }
