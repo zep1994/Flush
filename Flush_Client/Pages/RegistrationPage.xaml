@@ -8,13 +8,12 @@
             Text="Login"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-
-        <Entry Placeholder="User Name"/>
-        <Entry Placeholder="Email"/>
-        <Entry IsPassword="True" Placeholder="Password"/>
-
+        
+        <Entry x:Name="UserNameEntry" Placeholder="Username" />
+        <Entry x:Name="EmailEntry" Placeholder="Email" />
+        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="true" />
         <Button 
             Text="Register"
-            Clicked="Register_Clicked"/>
+            Clicked="OnRegisterClicked"/>
     </VerticalStackLayout>
 </ContentPage>
