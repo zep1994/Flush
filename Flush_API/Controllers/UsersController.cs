@@ -13,11 +13,14 @@ namespace Flush_API.Controllers
     {
         private readonly IUserRepo _repo;
         private readonly IMapper _mapper;
+        private readonly AppDbContext _context;
 
-        public UsersController(IUserRepo userRepo, IMapper mapper) 
+
+        public UsersController(IUserRepo userRepo, IMapper mapper, AppDbContext context)
         {
             _repo = userRepo;
             _mapper = mapper;
+            _context = context;
         }
 
         [HttpGet]
@@ -30,15 +33,19 @@ namespace Flush_API.Controllers
         }
 
         [HttpPost]
-        [Route("api/user/create")]
-        public async Task<ActionResult<User>> CreateUser(User user)
+        [Route("api/register")]
+        public async Task<IActionResult> Register([FromBody] User user)
         {
-            if (user != null)
+            if (user == null)
             {
-                _context.
+                return BadRequest("User data is empty.");
             }
 
-            return BadRequest("Invalid");
+            _context.User.Add(user);
+            await _context.SaveChangesAsync();
+
+            // Return a success response.
+            return Ok("User registered successfully.");
 
         }
 

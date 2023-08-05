@@ -5,8 +5,14 @@
              Title="RegistrationPage">
     <VerticalStackLayout>
         <Label 
-            Text="Register"
+            Text="Login"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Entry Placeholder="User Name"/>
+        <Entry Placeholder="Email"/>
+        <Entry IsPassword="True" Placeholder="Password"/>
+
+        
     </VerticalStackLayout>
 </ContentPage>

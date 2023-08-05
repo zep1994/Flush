@@ -7,7 +7,7 @@ namespace Flush_API.Data
         Task SaveChanges();
         Task<List<User>> GetUsers();
         Task<User> GetUserById(int id);
-        Task CreateUser(User user);
+        Task Register(User user);
         void DeleteUser(User user);
     }
 }

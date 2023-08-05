@@ -12,7 +12,7 @@ namespace Flush_API.Data
             _context = context;
         }
 
-        public Task CreateUser(User user)
+        public Task Register(User user)
         {
             throw new NotImplementedException();
         }
