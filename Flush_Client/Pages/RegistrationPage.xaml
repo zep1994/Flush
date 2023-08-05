@@ -13,6 +13,8 @@
         <Entry Placeholder="Email"/>
         <Entry IsPassword="True" Placeholder="Password"/>
 
-        
+        <Button 
+            Text="Register"
+            Clicked="Register_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

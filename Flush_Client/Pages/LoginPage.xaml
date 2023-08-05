@@ -9,12 +9,9 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Entry Placeholder="User Name"/>
-        <Entry IsPassword="True" Placeholder="Password"/>
+        <Entry x:Name="UserNameEntry" Placeholder="Username" />
+        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="true" />
+        <Button Text="Login" Clicked="OnLoginClicked" />
 
-        <Button 
-            Text="Login"
-            Clicked="Login_Clicked"/>
-        
     </VerticalStackLayout>
 </ContentPage>

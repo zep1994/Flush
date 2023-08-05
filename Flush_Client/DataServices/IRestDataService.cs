@@ -13,6 +13,5 @@ namespace Flush_Client.DataServices
         Task AddIbsCountAsync(IbsCount ibsCount);
         Task UpdateIbsCountAsync(IbsCount ibsCount);
         Task DeleteIbsCountAsync(int id);
-
     }
 }
