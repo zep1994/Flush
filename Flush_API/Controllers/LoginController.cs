@@ -18,21 +18,21 @@ namespace Flush_API.Controllers
             _config = config;
         }
 
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("api/user/login")]
-        public IActionResult Login([FromBody] UserLogin userLogin)
-        {
-            var user = Authenticate(userLogin);
+        //[AllowAnonymous]
+        //[HttpPost]
+        //[Route("api/user/login")]
+        //public IActionResult Login([FromBody] UserLogin userLogin)
+        //{
+        //    var user = Authenticate(userLogin);
 
-            if (user != null)
-            {
-                var token = Generate(user);
-                return Ok(token);
-            }
+        //    if (user != null)
+        //    {
+        //        var token = Generate(user);
+        //        return Ok(token);
+        //    }
 
-            return NotFound("Not Found");
-        }
+        //    return NotFound("Not Found");
+        //}
 
         private string Generate(User user)
         {
@@ -58,7 +58,7 @@ namespace Flush_API.Controllers
         private User Authenticate(UserLogin userLogin)
         {
             var currentUser = UserConstants.Users.FirstOrDefault(x => x.UserName.ToLower() == 
-                userLogin.Username.ToLower() && x.Password == userLogin.Password);
+                userLogin.UserName.ToLower() && x.Password == userLogin.Password);
 
             if (currentUser != null)
             {

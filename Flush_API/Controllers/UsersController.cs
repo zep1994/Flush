@@ -49,6 +49,37 @@ namespace Flush_API.Controllers
 
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("api/login")]
+        public IActionResult Login([FromBody] UserLogin model)
+        {
+            if (model == null)
+            {
+                return BadRequest("Invalid login data.");
+            }
+
+            // In a real application, you'd perform authentication against the database.
+            // For simplicity, we'll assume the user is already registered and we have their hashed password.
+
+            var user = _context.User.SingleOrDefault(u => u.UserName == model.UserName);
+
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            // In a real application, you'd compare the hashed password using a secure password hashing method.
+            // For this example, we'll assume the password is plain text (for demonstration purposes only).
+            if (user.Password != model.Password)
+            {
+                return Unauthorized("Invalid credentials.");
+            }
+
+            // Authentication successful.
+            return Ok("Login successful.");
+        }
+
         [HttpGet]
         [Route("api/admin")]
         [Authorize(Roles = "Admin")]

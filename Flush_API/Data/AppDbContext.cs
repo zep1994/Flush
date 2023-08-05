@@ -15,5 +15,7 @@ namespace Flush_API.Data
         public DbSet<Ingredient> Ingredient => Set<Ingredient>();
 
         public DbSet<User> User => Set<User>();
+
+        public DbSet<UserLogin> UserLogin => Set<UserLogin>();
     }
 }
