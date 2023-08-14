@@ -7,31 +7,10 @@ using System.Threading.Tasks;
 
 namespace Flush_Client.Models
 {
-    class Ingredient : INotifyPropertyChanged
+    public class Ingredient 
     {
-        int _id;
-        public int Id {
-            get => _id;
-            set
-            {
-                if (_id == value) return;
-                _id = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Id)));
-            }
-        }
-        string _name;
-        public string Name
-        {
-            get => _name;
-            set
-            {
-                if (_name == value) return;
-                _name = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
+       public int Id { get; set; }
+       public string Name { get; set; }
+       public string Image { get; set; }
     }
 }

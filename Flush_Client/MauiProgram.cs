@@ -26,6 +26,7 @@ namespace Flush_Client
             builder.Services.AddTransient<ManageIbsPage>();
             builder.Services.AddTransient<ProfilePage>();
             builder.Services.AddTransient<RegistrationPage>();
+            builder.Services.AddTransient<IngredientPage>();
 
             return builder.Build();
         }

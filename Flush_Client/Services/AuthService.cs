@@ -11,7 +11,7 @@ namespace Flush_Client.Services
         public async Task<bool> IsAuthenticatedAsync()
         {
             await Task.Delay(2000);
-            return false;
+            return true;
         }
     }
 }

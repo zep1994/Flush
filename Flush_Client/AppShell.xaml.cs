@@ -1,4 +1,5 @@
-﻿using Flush_Client.Pages;
+﻿using Flush_Client.Models;
+using Flush_Client.Pages;
 
 namespace Flush_Client
 {
@@ -12,6 +13,7 @@ namespace Flush_Client
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(ManageIbsPage), typeof(ManageIbsPage));
             Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
+            Routing.RegisterRoute(nameof(IngredientPage), typeof(IngredientPage));
 
 
         }
