@@ -9,8 +9,8 @@ public partial class IngredientPage : ContentPage
     private const string ApiUrl = "http://10.0.2.2:5271/api/ingredients/{0}";
 
     public IngredientPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
     }
 
@@ -33,10 +33,18 @@ public partial class IngredientPage : ContentPage
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-                var ingredientResult = JsonSerializer.Deserialize<IngredientResult>(jsonResponse);
+                var ingredientResult = JsonSerializer.Deserialize<Ingredient>(jsonResponse);
 
-                // Display ingredient information on the UI
-                UpdateUIWithIngredientInfo(ingredientResult);
+                // Update UI labels with ingredient information.
+                NameLabel.Text = ingredientResult.Name;
+
+                // Display JSON results in the layout
+                var jsonLabel = new Label
+                {
+                    Text = jsonResponse,
+                    FontSize = 14
+                };
+                JsonResultsLayout.Children.Add(jsonLabel);
             }
             else
             {
@@ -46,23 +54,6 @@ public partial class IngredientPage : ContentPage
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
-        }
-    }
-
-
-    private void UpdateUIWithIngredientInfo(IngredientResult ingredientResult)
-    {
-
-        JsonResultsLayout.Children.Clear(); // Clear previous results
-
-        foreach (var result in ingredientResult.Ingredients)
-        {
-            var nameLabel = new Label
-            {
-                Text = result.Name,
-                FontSize = 16
-            };
-            JsonResultsLayout.Children.Add(nameLabel);
         }
     }
 }
