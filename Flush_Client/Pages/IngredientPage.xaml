@@ -10,18 +10,15 @@
             HorizontalOptions="Center" />
 
         <StackLayout Margin="20">
-            <Entry x:Name="IngredientEntry" Placeholder="Enter Ingredient" />
-            <Button Text="Get Info" Clicked="LoadIngredients" />
-            <Label Text="Ingredient Name:" FontSize="20" />
-            <Label x:Name="NameLabel" FontSize="16" />
-
-
-            <!-- Add a ScrollView to display JSON results -->
-            <ScrollView>
-                <StackLayout x:Name="JsonResultsLayout" Margin="0,20,0,0">
-                    <!-- JSON results will be added here -->
-                </StackLayout>
-            </ScrollView>
+            <Entry x:Name="IngredientEntry" Placeholder="Enter food name..." />
+            <Button Text="Search" Clicked="LoadIngredients" />
+            <ListView ItemsSource="{Binding FoodItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" Detail="{Binding Description}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
 
 

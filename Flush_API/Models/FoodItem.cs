@@ -21,5 +21,8 @@
         public bool CarbonatedBeverage { get; set; }
         public bool ArtificialAdditive { get; set; }
         public bool CoffeeTea { get; set; }
+
+        public ICollection<MealFoodItem> MealFoodItems { get; set; } = new List<MealFoodItem>();
+
     }
 }

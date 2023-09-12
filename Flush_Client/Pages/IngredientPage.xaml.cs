@@ -6,7 +6,9 @@ namespace Flush_Client.Pages;
 
 public partial class IngredientPage : ContentPage
 {
-    private const string ApiUrl = "http://10.0.2.2:5271/api/ingredients/{0}";
+    private const string ApiUrl = "http://10.0.2.2:5271/api/food/{0}";
+    private List<Ingredient> _foodItems;
+
 
     public IngredientPage()
     {
@@ -35,8 +37,6 @@ public partial class IngredientPage : ContentPage
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 var ingredientResult = JsonSerializer.Deserialize<Ingredient>(jsonResponse);
 
-                // Update UI labels with ingredient information.
-                NameLabel.Text = ingredientResult.Name;
 
                 // Display JSON results in the layout
                 var jsonLabel = new Label
@@ -44,7 +44,6 @@ public partial class IngredientPage : ContentPage
                     Text = jsonResponse,
                     FontSize = 14
                 };
-                JsonResultsLayout.Children.Add(jsonLabel);
             }
             else
             {

@@ -10,5 +10,7 @@ namespace Flush_API.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public string Role { get; set; } = "User";
+        // Navigation property for User's meals
+        public ICollection<Meal> Meals { get; set; } = new List<Meal>();
     }
 }
