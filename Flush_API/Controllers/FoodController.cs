@@ -24,17 +24,26 @@ namespace Flush_API.Controllers
             return Ok(_foodItems);
         }
 
-        [HttpGet("{id}")]
-        [Route("api/food/{id}")]
-        public IActionResult GetFoodItem(int id)
+        [HttpGet]
+        [Route("api/food/byname")]
+        public async Task<IActionResult> GetFoodItem([FromBody] FoodItem requestFoodItem)
         {
-            var foodItem = _foodItems.FirstOrDefault(item => item.Id == id);
-            if (foodItem == null)
             {
-                return NotFound();
-            }
+                if (requestFoodItem == null || string.IsNullOrEmpty(requestFoodItem.Name))
+                {
+                    return BadRequest("Invalid food item name provided.");
+                }
 
-            return Ok(foodItem);
+                var foodItem = await _context.FoodItem
+                                      .FirstOrDefaultAsync(b => b.Name.ToLower() == requestFoodItem.Name.ToLower());
+
+                if (foodItem == null)
+                {
+                    return NotFound($"No food item found with the name: {requestFoodItem.Name}");
+                }
+
+                return Ok(foodItem);
+            }
         }
 
         [HttpPost]
@@ -54,7 +63,7 @@ namespace Flush_API.Controllers
         }
 
         [HttpPut("{id}")]
-        [Route("api/food/{id}")]
+        [Route("api/foods/{id}")]
         public IActionResult UpdateFoodItem(int id, FoodItem foodItem)
         {
             var existingItem = _foodItems.FirstOrDefault(item => item.Id == id);
@@ -73,7 +82,7 @@ namespace Flush_API.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Route("api/food/{id}")]
+        [Route("api/foods/{id}")]
         public IActionResult DeleteFoodItem(int id)
         {
             var existingItem = _foodItems.FirstOrDefault(item => item.Id == id);

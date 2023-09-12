@@ -33,11 +33,6 @@ namespace Flush_API.Controllers
         [Route("api/ingredients/{ingredient}")]
         public async Task<IActionResult> GetIngredientInfo(string ingredient)
         {
-            //var path = $"https://api.spoonacular.com/food/ingredients/search?apiKey=0bb23cf0a7f64e77b02f60042af49ecf&query={ingredient}";
-            //var request = new HttpRequestMessage(HttpMethod.Get, path);
-            //var response = client.SendAsync(request).Result;
-            //var stringResponse = await response.Content.ReadAsStringAsync();
-            //return Ok(stringResponse);
             if (string.IsNullOrWhiteSpace(ingredient))
             {
                 return BadRequest("Ingredient is required.");
