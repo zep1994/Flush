@@ -19,9 +19,9 @@ namespace Flush_API.Controllers
 
         [HttpGet]
         [Route("api/foods")]
-        public IActionResult GetFoods()
+        public ActionResult<IEnumerable<FoodItem>> GetFoodItems()
         {
-            return Ok(_foodItems);
+            return _context.FoodItems.ToList();
         }
 
         [HttpGet("{id}")]
