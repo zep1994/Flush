@@ -34,7 +34,7 @@ namespace Flush_API.Controllers
         [Route("api/ingredient/{ingredient}")]
         public async Task<ActionResult<IEnumerable<IngredientReadDto>>> GetIngredient(string ingredient)
         {
-            var path = $"https://api.spoonacular.com/food/ingredients/search?apiKey=0bb23cf0a7f64e77b02f60042af49ecf&query={ingredient}";
+            var path = $"https://api.spoonacular.com/food/ingredients/search?apiKey={API_KEY}&query={ingredient}";
             var request = new HttpRequestMessage(HttpMethod.Get, path);
             var response = client.SendAsync(request).Result;
             var stringResponse = await response.Content.ReadAsStringAsync();
